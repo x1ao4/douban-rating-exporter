@@ -4,11 +4,11 @@
 ## 示例
 假设您需要获取您的豆瓣电影评分数据，使用此脚本后，您会得到类似于下面这样的数据：
 ```
-肖申克的救赎: 5
-这个杀手不太冷: 4
-霸王别姬: 5
-阿甘正传: 5
-美丽人生: 4
+肖申克的救赎 (1994): 5
+这个杀手不太冷 (1994): 4
+阿甘正传 (1994): 5
+霸王别姬 (1993): 5
+美丽人生 (1997): 4
 ```
 
 ## 运行条件
@@ -35,11 +35,11 @@ The douban-rating-exporter allows you to export rating data of movies, TV shows 
 ## Demo
 Suppose you need to get your Douban movie rating data. After using this script, you will get data similar to the following:
 ```
-肖申克的救赎: 5
-这个杀手不太冷: 4
-霸王别姬: 5
-阿甘正传: 5
-美丽人生: 4
+肖申克的救赎 (1994): 5
+这个杀手不太冷 (1994): 4
+阿甘正传 (1994): 5
+霸王别姬 (1993): 5
+美丽人生 (1997): 4
 ```
 
 ## Requirements
