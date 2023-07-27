@@ -47,16 +47,18 @@ with open('movies.txt', 'w', encoding='utf-8') as f:
             title = title_parts[0].strip()
             title = re.sub(r'\s+', ' ', title)
             title = title.replace(' [可播放]', '')
-            rating_element = movie.find('div', class_='date').find('span')
+            date_element = movie.find('div', class_='date')
+            year = date_element.contents[-1].strip().split('-')[0]
+            rating_element = date_element.find('span')
             if rating_element:
                 has_rating = True
                 rating = rating_element['class'][0][-3]
-                movies.append((title, rating))
-                print(f'{title}: {rating}')
-                f.write(f'{title}: {rating}\n')
+                movies.append((title, year, rating))
+                print(f'{title} ({year}): {rating}')
+                f.write(f'{title} ({year}): {rating}\n')
                 f.flush()
             else:
-                unrated_movies.append(title)
+                unrated_movies.append((title, year))
 
         if has_rating:
             print()
@@ -73,8 +75,8 @@ unrated_movie_count = len(unrated_movies)
 
 # 打印统计信息
 print(f'共有 {unrated_movie_count} 部影片没有评分，它们是: \n')
-for title in unrated_movies:
-    print(title)
+for title, year in unrated_movies:
+    print(f'{title} ({year})')
 
 print(f'\n共处理 {movie_count + unrated_movie_count} 部影片')
 print(f'共导出 {movie_count} 部影片的评分')
