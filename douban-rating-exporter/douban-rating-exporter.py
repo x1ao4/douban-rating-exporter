@@ -47,9 +47,17 @@ with open('movies.txt', 'w', encoding='utf-8') as f:
             title = title_parts[0].strip()
             title = re.sub(r'\s+', ' ', title)
             title = title.replace(' [可播放]', '')
-            date_element = movie.find('div', class_='date')
-            year = date_element.contents[-1].strip().split('-')[0]
-            rating_element = date_element.find('span')
+            year_element = movie.find_next_sibling('div').find('span', class_='intro')
+            if year_element:
+                year_text = year_element.text.strip()
+                year_match = re.search(r'\d{4}', year_text)
+                if year_match:
+                    year = year_match.group(0)
+                else:
+                    year = 'Unknown'
+            else:
+                year = 'Unknown'
+            rating_element = movie.find('div', class_='date').find('span')
             if rating_element:
                 has_rating = True
                 rating = rating_element['class'][0][-3]
